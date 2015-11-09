@@ -26,7 +26,7 @@ public class QuickSortTest<T> {
     };
     private static final QuickSort QUICK_SORT = new QuickSort();
 
-    private static Object[][] TEST_DATA = {
+    private static final Object[][] TEST_DATA = {
             {QUICK_SORT, CAR_ENGINEPOWER_COMPARATOR, new Car[]{}},
             {QUICK_SORT, CAR_MODEL_COMPARATOR, new Car[]{new Car("mercedes", 2010, 220.8), new Car("audi", 2009, 450.5), new Car("bmw", 2011, 245)}},
             {QUICK_SORT, CAR_BIRTHYEAR_COMPARATOR, new Car[]{new Car("toyota", 2015, 150.7), new Car("nissan", 2014, 300)}},
@@ -65,7 +65,6 @@ public class QuickSortTest<T> {
 
         Assert.assertTrue("The array isn't sorted", testAscendingOrder(result, comparator));
         Assert.assertEquals("Result array length should be equal to original", input.length, result.length);
-        Assert.assertTrue(hasEachElementOf(input, result, comparator));
         Assert.assertTrue("Input array differs from Result array", hasSameNumberOfEachElement(input, result, comparator));
     }
 
@@ -77,31 +76,20 @@ public class QuickSortTest<T> {
         return true;
     }
 
-    private boolean hasEachElementOf(T[] input, T[] result, Comparator<T> comparator) {
-        for (T element : input) {
-            for (int j = 0; j < result.length; j++) {
-                if (comparator.compare(result[j],element) == 0)
-                    break;
-                if (j == result.length - 1)
-                    return false;
-            }
-        }
-        return true;
-    }
 
     private boolean hasSameNumberOfEachElement(T[] input, T[] result, Comparator<T> comparator) {
-        for(T element : input){
+        for (T element : input) {
             int numOfElementInInput = 0;
             int numOfElementInResult = 0;
-            for(int j = 0; j < input.length; ++j){
-                if(comparator.compare(element,input[j]) == 0)
+            for (int j = 0; j < input.length; ++j) {
+                if (comparator.compare(element, input[j]) == 0)
                     numOfElementInInput++;
             }
-            for(int i = 0; i < result.length; ++i){
-                if(comparator.compare(element,result[i]) == 0)
+            for (int i = 0; i < result.length; ++i) {
+                if (comparator.compare(element, result[i]) == 0)
                     numOfElementInResult++;
             }
-            if(numOfElementInInput != numOfElementInResult)
+            if (numOfElementInInput != numOfElementInResult)
                 return false;
         }
         return true;
