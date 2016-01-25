@@ -1,0 +1,36 @@
+4445.0
+3.0
+-149717.0
+3083.1500000000005
+Brackets are not balanced.
+Unhandled lexeme.
+Wrong syntax.
+Division by zero.
+-1.6666666666666667
+Wrong syntax.
+45.0
+Wrong syntax.
+Wrong syntax.
+Too many variables.
+Wrong syntax.
+Wrong syntax.
+11.0000000000003
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Unhandled lexeme.
+Brackets are not balanced.
+Wrong syntax.
+Brackets are not balanced.
+0.0
+Wrong syntax.
+Wrong syntax.
+Wrong syntax.
+-18.25
+Wrong syntax.
+Unhandled lexeme.
