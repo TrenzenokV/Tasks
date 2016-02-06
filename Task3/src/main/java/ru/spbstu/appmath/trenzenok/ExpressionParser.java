@@ -1,8 +1,9 @@
 package ru.spbstu.appmath.trenzenok;
 
-public class Calculator {
-    public Expression calculateExpression(String str) throws Exception {
+public class ExpressionParser {
 
+    public Expression calculateExpression(String str) throws Exception {
+        str = str.replace(" ","");
         if (str.equals(""))
             throw new Exception("Empty input.");
         if (!checkSymbols(str))
@@ -12,16 +13,16 @@ public class Calculator {
         int lenStr = str.length();
         int pos;
 
-        if ((pos = findPosition(str, '+')) != -1)
+        if ((pos = findPosition(str, '+')) != -1 && (pos != str.length() - 1) && (pos != 0))
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '+');
 
-        if ((pos = findPosition(str, '-')) != -1)
+        if ((pos = findPosition(str, '-')) != -1 && (pos != str.length() - 1) && (pos != 0))
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '-');
 
-        if ((pos = findPosition(str, '*')) != -1)
+        if ((pos = findPosition(str, '*')) != -1 && (pos != str.length() - 1) && (pos != 0))
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '*');
 
-        if ((pos = findPosition(str, '/')) != -1)
+        if ((pos = findPosition(str, '/')) != -1 && (pos != str.length() - 1) && (pos != 0))
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '/');
 
         if (str.charAt(0) == '(')
@@ -43,7 +44,7 @@ public class Calculator {
         throw new Exception("Syntax error.");
     }
 
-    private int findPosition(String str, char symbol) {
+    private int findPosition(String str, char symbol) throws Exception {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '(')
@@ -60,17 +61,19 @@ public class Calculator {
     private boolean numOfBrackets(String str) {
         int countLeft = 0;
         int countRight = 0;
+        char c;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '(')
+            c = str.charAt(i);
+            if (c == '(')
                 countLeft++;
-            if (str.charAt(i) == ')')
+            if (c == ')')
                 countRight++;
         }
         if (countLeft != countRight)
             return false;
         return true;
     }
-    
+
     private boolean checkSymbols(String str) {
         char correctSymbol[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '+', '-', '*', '/', '(', ')', 'x', '.'};
         int counter = 0;

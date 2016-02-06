@@ -56,7 +56,7 @@ public class CalculatorTest {
     }
 
     private boolean checkAnswer() throws Exception {
-        final Calculator calculator = new Calculator();
+        final ExpressionParser calculator = new ExpressionParser();
         Expression res = calculator.calculateExpression(expression);
         if (res.calculate(variable) != result)
             return false;
