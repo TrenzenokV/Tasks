@@ -14,10 +14,9 @@ public class Main {
                 System.out.println(e.getMessage());
             }
             try {
-                if(result != null)
                     System.out.println(result.calculate(x));
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         } else {
             System.out.print("Wrong arguments.");
