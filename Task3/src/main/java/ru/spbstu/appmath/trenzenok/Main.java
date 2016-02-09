@@ -10,13 +10,9 @@ public class Main {
             try {
                 x = Double.valueOf(args[1]);
                 result = calculator.calculateExpression(args[0]);
+                System.out.println(result.calculate(x));
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-            }
-            try {
-                    System.out.println(result.calculate(x));
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } else {
             System.out.print("Wrong arguments.");
