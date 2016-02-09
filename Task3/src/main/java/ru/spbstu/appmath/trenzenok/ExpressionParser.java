@@ -5,7 +5,7 @@ public class ExpressionParser {
     public Expression calculateExpression(String str) throws Exception {
         str = str.replace(" ","");
         if (str.equals(""))
-            throw new Exception("Empty input.");
+            throw new Exception("Not enough arguments.");
         if (!checkSymbols(str))
             throw new Exception("Wrong symbol.");
         if (!numOfBrackets(str))
@@ -13,16 +13,16 @@ public class ExpressionParser {
         int lenStr = str.length();
         int pos;
 
-        if ((pos = findPosition(str, '+')) != -1 && (pos != str.length() - 1) && (pos != 0))
+        if ((pos = findPosition(str, '+')) != -1)
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '+');
 
-        if ((pos = findPosition(str, '-')) != -1 && (pos != str.length() - 1) && (pos != 0))
+        if ((pos = findPosition(str, '-')) != -1)
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '-');
 
-        if ((pos = findPosition(str, '*')) != -1 && (pos != str.length() - 1) && (pos != 0))
+        if ((pos = findPosition(str, '*')) != -1)
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '*');
 
-        if ((pos = findPosition(str, '/')) != -1 && (pos != str.length() - 1) && (pos != 0))
+        if ((pos = findPosition(str, '/')) != -1)
             return new ExpressionTree(calculateExpression(str.substring(0, pos)), calculateExpression(str.substring(pos + 1)), '/');
 
         if (str.charAt(0) == '(')

@@ -6,20 +6,21 @@ public class Main {
         double x = 0;
         final ExpressionParser calculator = new ExpressionParser();
         Expression result = null;
-       // if (args.length == 2) {
+        if (args.length == 2) {
             try {
-         //       x = Double.valueOf(args[1]);
-                result = calculator.calculateExpression("x + (x + 10)");
+                x = Double.valueOf(args[1]);
+                result = calculator.calculateExpression(args[0]);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
             try {
-                System.out.println(result.calculate(x));
+                if(result != null)
+                    System.out.println(result.calculate(x));
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        //} else {
-          //  System.out.print("Wrong arguments.");
-        //}
+        } else {
+            System.out.print("Wrong arguments.");
+        }
     }
 }
